@@ -1,4 +1,8 @@
 # WaterDock2.0
+
+![flake8](https://github.com/bigginlab/WaterDock-2.0/workflows/flake8/badge.svg?branch=master) ![mypy](https://github.com/bigginlab/WaterDock-2.0/workflows/mypy/badge.svg)
+[![License](https://img.shields.io/github/license/RMeli/pyrmsd?color=%2333BBFF)](https://opensource.org/licenses/MIT)
+
 # This is an updated to Python3 version of WaterDock2.0 https://github.com/bigginlab/WaterDock-2.0
 # If you still need the  python2 version, you should visit:  https://github.com/akshay-sridhar/WaterDock2.0
 
@@ -17,6 +21,9 @@ python waterdock2.py proteinfile.pdbqt ligandfile.pdb
 This will output a single file called "predictedwaters.pdb", which contains the predictions of the oxygen positions.
 
 
+Example input files are included as example-protein.pdbqt and example-ligand.pdb
+
+
 # Dependencies
 
 -- MDAnalysis (version >= 0.13)
@@ -25,12 +32,18 @@ This will output a single file called "predictedwaters.pdb", which contains the 
 
 -- scipy (version does not matter)
 
+-- vina (note on Mac Catalina, you may have to obtain the 64bit version directly from http://vina.scripps.edu/download.html) 
+
 
 # File Formats
 
 Protein File -- *pdbqt* - the Autodock format of a PDB with charge (Q) and atom type (T)
 
 Ligand File -- *pdb/mol2*  sybyl mol2 format
+
+Note that both the ligand and the protein file should have the correction protonation state.   
+
+To generate the receptor pdbqt file, we recommend AutoDockTools (ADT - get MGLTools from http://mgltools.scripps.edu/downloads), but if you are on a Mac with Catalina there is currently no 64-bit version.   In that case you might be avle to use the AFR package (see here https://ccsb.scripps.edu/adfr/how-to-create-a-pdbqt-for-my-receptor/)
 
 # Examples/Tests
 
@@ -40,5 +53,7 @@ python waterdock2.py example-protein.pdbqt example-ligand.pdb
 
 will generate predictedwaters.pdb which should contain 3 predicted water molecule locations.
 
-You can check the result of the prediction in pymol
+You can check the result of the prediction in pymol or compare it directly to the file "expected-predictedwaters.pdb"
+
+
 
